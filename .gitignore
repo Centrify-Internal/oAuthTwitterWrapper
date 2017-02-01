@@ -1,7 +1,17 @@
 _ReSharper.oAuthTwitterTimeline
 _ReSharper.oAuthTwitterTimeline
-bin
-obj
+
+# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+[Bb]in/
+[Oo]bj/
+
+# Ignore NuGet Packages 
+# [use with VS Automatic Package Restore function : 
+# http://docs.nuget.org/Consume/Package-Restore#automatic-package-restore-in-visual-studio]
+/packages
+
+# Visual Studio 2015 cache/options directory
+.vs/
 
 # OS generated files #
 ######################
