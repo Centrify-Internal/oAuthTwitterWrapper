@@ -9,6 +9,7 @@ _ReSharper.oAuthTwitterTimeline
 # [use with VS Automatic Package Restore function : 
 # http://docs.nuget.org/Consume/Package-Restore#automatic-package-restore-in-visual-studio]
 /packages
+*.nupkg
 
 # Visual Studio 2015 cache/options directory
 .vs/

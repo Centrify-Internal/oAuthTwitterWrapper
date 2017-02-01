@@ -75,6 +75,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del /F /Q "$(TargetDir)*.nupkg" 2&gt;NUL
+      nuget pack "$(ProjectPath)" -Properties "Configuration=$(Configuration);Platform=$(Platform)" -IncludeReferencedProjects
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

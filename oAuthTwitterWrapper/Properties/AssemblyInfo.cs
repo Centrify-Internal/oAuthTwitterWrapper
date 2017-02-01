@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("oAuthTwitterWrapper")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Centrify")]
 [assembly: AssemblyProduct("oAuthTwitterWrapper")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("20010c2c-3edc-48e3-a0da-cc29dfa3b103")]
+[assembly: Guid("9BA7D41D-7578-4F76-8DEB-7CCC9F8DB468")]
 
 // Version information for an assembly consists of the following four values:
 //
