@@ -11,7 +11,7 @@ namespace OAuthTwitterWrapper
 {
 	class Utility
 	{
-		public string RequstJson(string apiUrl, string tokenType, string accessToken)
+		public string RequestJson(string apiUrl, string tokenType, string accessToken)
 		{
 			var json = string.Empty;			
 			HttpWebRequest apiRequest = (HttpWebRequest)WebRequest.Create(apiUrl);

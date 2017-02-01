@@ -91,7 +91,7 @@ namespace OAuthTwitterWrapper
 
             // Do the timeline
 			var utility = new Utility();
-			timeLineJson = utility.RequstJson(TimeLineSettings.TimelineUrl, twitAuthResponse.TokenType, twitAuthResponse.AccessToken);
+			timeLineJson = utility.RequestJson(TimeLineSettings.TimelineUrl, twitAuthResponse.TokenType, twitAuthResponse.AccessToken);
             
             return timeLineJson;
         }
@@ -104,7 +104,7 @@ namespace OAuthTwitterWrapper
 
 			// Do the timeline
 			var utility = new Utility();
-			searchJson = utility.RequstJson(SearchSettings.SearchUrl, twitAuthResponse.TokenType, twitAuthResponse.AccessToken);
+			searchJson = utility.RequestJson(SearchSettings.SearchUrl, twitAuthResponse.TokenType, twitAuthResponse.AccessToken);
 
 			return searchJson;
 		}
