@@ -8,7 +8,7 @@ namespace OAuthTwitterWrapper.JsonTypes
 
     public class UserMention
     {
-        [JsonProperty("screenname")]
+        [JsonProperty("screen_name")]
         public string ScreenName { get; set; }
 
         [JsonProperty("name")]
