@@ -46,8 +46,12 @@ namespace OAuthTwitterWrapper.JsonTypes
 		public User User { get; set; }
 
 		[JsonProperty("geo")]
-		public string Geo { get; set; }
+		public Geo Geo { get; set; }
 
+        /// <summary>
+        /// According to this: https://dev.twitter.com/rest/reference/post/statuses/update
+        /// This property will replace the <see cref="Geo"/> property.
+        /// </summary>
 		[JsonProperty("coordinates")]
 		public string Coordinates { get; set; }
 
