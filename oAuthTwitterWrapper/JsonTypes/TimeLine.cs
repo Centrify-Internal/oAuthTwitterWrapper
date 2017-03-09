@@ -60,7 +60,7 @@ namespace OAuthTwitterWrapper.JsonTypes
         public TypedCoordinateContainer Coordinates { get; set; }
 
 		[JsonProperty("place")]
-		public string Place { get; set; }
+		public Place Place { get; set; }
 
 		[JsonProperty("contributors")]
 		public string Contributors { get; set; }

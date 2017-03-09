@@ -48,11 +48,14 @@ namespace OAuthTwitterWrapper.Tests.Unit.JsonTypes.TimeLineTests
         [TestCase("Point")]
         [TestCase("LineString")]
         [TestCase("Polygon")]
-        public void And_Places_Property_Is_NonNull_Then_Deserialization_Should_Not_Throw_Errors(string coordinateType)
+        public void And_Place_Property_Is_NonNull_Then_Deserialization_Should_Not_Throw_Errors(string coordinateType)
         {
-            string testJson = DummyTimeLineJson.GetTimeLineJsonWithPlacesPropertySet(coordinateType);
+            string testJson = DummyTimeLineJson.GetTimeLineJsonWithPlacePropertySet(coordinateType);
 
-            Assert.DoesNotThrow(() => JsonConvert.DeserializeObject<List<TimeLine>>(testJson));
+            Assert.DoesNotThrow(() =>
+            {
+                List<TimeLine> test = JsonConvert.DeserializeObject<List<TimeLine>>(testJson);
+            });
         }
 
 

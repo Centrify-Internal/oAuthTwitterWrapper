@@ -71,6 +71,7 @@
     <Compile Include="JsonTypes\Coordinates\TypedCoordinateContainer.cs" />
     <Compile Include="JsonTypes\Hashtag.cs" />
     <Compile Include="JsonTypes\Media.cs" />
+    <Compile Include="JsonTypes\Place.cs" />
     <Compile Include="JsonTypes\Search.cs" />
     <Compile Include="JsonTypes\TimeLine.cs" />
     <Compile Include="JsonTypes\Url.cs" />
