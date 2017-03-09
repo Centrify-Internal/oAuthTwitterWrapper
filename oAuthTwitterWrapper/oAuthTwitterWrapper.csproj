@@ -53,7 +53,6 @@
     <Compile Include="IOAuthTwitterWrapper.cs" />
     <Compile Include="ISearchSettings.cs" />
     <Compile Include="ITimeLineSettings.cs" />
-    <Compile Include="JsonConverters\LegacyCoordinateJsonConverter.cs" />
     <Compile Include="JsonConverters\TypedCoordinateContainerJsonConverter.cs" />
     <Compile Include="JsonTypes\AuthResponse.cs" />
     <Compile Include="JsonTypes\Coordinates\CoordinatePair.cs" />
@@ -63,13 +62,10 @@
     <Compile Include="JsonTypes\Coordinates\Polygon.cs" />
     <Compile Include="JsonTypes\Coordinates\LineString.cs" />
     <Compile Include="JsonTypes\Coordinates\Point.cs" />
-    <Compile Include="JsonTypes\ICoordinate.cs" />
     <Compile Include="JsonTypes\Interfaces\ICoordinateCollection.cs" />
     <Compile Include="JsonTypes\Interfaces\ICoordinatePair.cs" />
     <Compile Include="JsonTypes\Interfaces\ITypedCoordinate.cs" />
     <Compile Include="JsonTypes\Interfaces\ITypedCoordinateContainer.cs" />
-    <Compile Include="JsonTypes\LegacyCoordinate.cs" />
-    <Compile Include="JsonTypes\Coordinate.cs" />
     <Compile Include="JsonTypes\Description.cs" />
     <Compile Include="JsonTypes\Entities.cs" />
     <Compile Include="JsonTypes\Coordinates\TypedCoordinateContainer.cs" />

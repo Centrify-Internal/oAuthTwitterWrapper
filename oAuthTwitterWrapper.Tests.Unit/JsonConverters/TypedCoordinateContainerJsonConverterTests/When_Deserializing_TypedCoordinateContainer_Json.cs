@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace oAuthTwitterWrapper.Tests.Unit.JsonTypes.Coordinates.TypedCoordinateContainerTests
+namespace oAuthTwitterWrapper.Tests.Unit.JsonConverters.TypedCoordinateContainerJsonConverterTests
 {
     [TestFixture]
     public class When_Deserializing_TypedCoordinateContainer_Json
