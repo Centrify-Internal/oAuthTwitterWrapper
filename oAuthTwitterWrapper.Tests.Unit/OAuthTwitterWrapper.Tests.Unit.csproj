@@ -52,7 +52,7 @@
     <Compile Include="JsonConverters\CoordinateJsonConverterTests\When_Serializing_Coordinate.cs" />
     <Compile Include="JsonConverters\LegacyCoordinateJsonConverterTests\When_Deserializing_To_Coordinate_From_Legacy_Format.cs" />
     <Compile Include="JsonConverters\LegacyCoordinateJsonConverterTests\When_Serializing_Coordinate_To_Legacy_Format.cs" />
-    <Compile Include="JsonTypes\GeoTests\When_Deserializing_Geo_Json.cs" />
+    <Compile Include="JsonTypes\Coordinates\TypedCoordinateContainerTests\When_Deserializing_TypedCoordinateContainer_Json.cs" />
     <Compile Include="JsonTypes\TimeLineTests\When_Deserializing_TimeLine_Json.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers\DummyTimeLineJson.cs" />

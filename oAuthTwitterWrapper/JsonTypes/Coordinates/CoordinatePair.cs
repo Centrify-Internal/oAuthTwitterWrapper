@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OAuthTwitterWrapper.JsonTypes.Coordinate
+namespace OAuthTwitterWrapper.JsonTypes.Coordinates
 {
     public class CoordinatePair : ICoordinatePair
     {
@@ -15,6 +15,12 @@ namespace OAuthTwitterWrapper.JsonTypes.Coordinate
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        /// <param name="isLegacyFormat">For Twitter "legacy" format, latitude is stored first in JSON array, so this is mainly for indicating legacy format for conversion to/from JSON.</param>
         public CoordinatePair(decimal latitude, decimal longitude, bool isLegacyFormat)
         {
             Latitude = latitude;
@@ -37,6 +43,9 @@ namespace OAuthTwitterWrapper.JsonTypes.Coordinate
             }
         }
 
+        /// <summary>
+        /// For Twitter "legacy" format, latitude is stored first in JSON array, so this is mainly for indicating legacy format for conversion to/from JSON.
+        /// </summary>
         public bool IsLegacyFormat { get; set; }
     }
 }

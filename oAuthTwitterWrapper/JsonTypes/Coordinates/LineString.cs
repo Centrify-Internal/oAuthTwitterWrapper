@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OAuthTwitterWrapper.JsonTypes.Coordinate
+namespace OAuthTwitterWrapper.JsonTypes.Coordinates
 {
     /// <summary>
     /// TJM: LineString is made up of a one or more points.

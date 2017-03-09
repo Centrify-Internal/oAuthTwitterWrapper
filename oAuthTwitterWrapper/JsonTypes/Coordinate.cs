@@ -7,7 +7,7 @@ using System.Text;
 
 namespace OAuthTwitterWrapper.JsonTypes
 {
-    [JsonConverter(typeof(CoordinateJsonConverter))]
+    [JsonConverter(typeof(TypedCoordinateContainerJsonConverter))]
     public class Coordinate : ICoordinate
     {
         public Coordinate()
