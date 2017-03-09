@@ -56,7 +56,8 @@ namespace OAuthTwitterWrapper.JsonTypes
         /// This property will replace the <see cref="Geo"/> property.
         /// </summary>
 		[JsonProperty("coordinates")]
-		public string Coordinates { get; set; }
+        [JsonConverter(typeof(TypedCoordinateContainerJsonConverter), false)]
+        public TypedCoordinateContainer Coordinates { get; set; }
 
 		[JsonProperty("place")]
 		public string Place { get; set; }

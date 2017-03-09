@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OAuthTwitterWrapper.JsonTypes.Coordinates;
+using OAuthTwitterWrapper.JsonTypes.Interfaces;
 
 namespace OAuthTwitterWrapper.Tests.Unit.JsonTypes.TimeLineTests
 {
@@ -18,53 +20,121 @@ namespace OAuthTwitterWrapper.Tests.Unit.JsonTypes.TimeLineTests
     [TestFixture]
     public class When_Deserializing_TimeLine_Json
     {
+        [TestCase("Unknown")]
+        [TestCase("Point")]
+        [TestCase("LineString")]
+        [TestCase("Polygon")]
+        public void And_Geo_Property_Is_NonNull_Then_Deserialization_Should_Not_Throw_Errors(string coordinateType)
+        {
+            string testJson = DummyTimeLineJson.GetTimeLineJsonWithGeoPropertySet(coordinateType);
+
+            Assert.DoesNotThrow(() => JsonConvert.DeserializeObject<List<TimeLine>>(testJson));
+
+        }
+
         [Test]
-        public void And_Geo_Property_Is_NonNull_And_Type_Is_Point_Then_Deserialization_Should_Not_Throw_Errors()
+        public void And_Geo_Property_Is_NonNull_Then_Coordinates_Should_Be_In_Legacy_Format()
         {
             string testJson = DummyTimeLineJson.GetTimeLineJsonWithGeoPropertySet();
 
-            Assert.DoesNotThrow(() => JsonConvert.DeserializeObject<List<TimeLine>>(testJson));
+            List<TimeLine> timeline = JsonConvert.DeserializeObject<List<TimeLine>>(testJson);
+            TimeLine timelineItem = timeline.FirstOrDefault();
 
+            AssertCoordinateFormatForTypedCoordinateContainer(timelineItem.Geo);
+        }
+
+
+        [TestCase("Unknown")]
+        [TestCase("Point")]
+        [TestCase("LineString")]
+        [TestCase("Polygon")]
+        public void And_Places_Property_Is_NonNull_Then_Deserialization_Should_Not_Throw_Errors(string coordinateType)
+        {
+            string testJson = DummyTimeLineJson.GetTimeLineJsonWithPlacesPropertySet(coordinateType);
+
+            Assert.DoesNotThrow(() => JsonConvert.DeserializeObject<List<TimeLine>>(testJson));
+        }
+
+
+        [TestCase("Unknown")]
+        [TestCase("Point")]
+        [TestCase("LineString")]
+        [TestCase("Polygon")]
+        public void And_Coordinates_Property_Is_NonNull_Then_Deserialization_Should_Not_Throw_Errors(string coordinateType)
+        {
+            string testJson = DummyTimeLineJson.GetTimeLineJsonWithCoordinatesPropertySet(coordinateType);
+
+            Assert.DoesNotThrow(() => JsonConvert.DeserializeObject<List<TimeLine>>(testJson));
         }
 
         [Test]
-        public void And_Geo_Property_Is_NonNull_And_Type_Is_LineString_Then_Deserialization_Should_Not_Throw_Errors()
+        public void And_Coordinates_Property_Is_NonNull_Then_Coordinates_Should_Be_In_New_Format()
         {
-            string testJson = DummyTimeLineJson.GetTimeLineJsonWithGeoPropertySet("LineString");
+            string testJson = DummyTimeLineJson.GetTimeLineJsonWithCoordinatesPropertySet();
 
-            Assert.DoesNotThrow(() => JsonConvert.DeserializeObject<List<TimeLine>>(testJson));
+            List<TimeLine> timeline = JsonConvert.DeserializeObject<List<TimeLine>>(testJson);
 
+            AssertCoordinateFormatForTypedCoordinateContainer(timeline.FirstOrDefault().Coordinates);
         }
 
-        [Test]
-        public void And_Geo_Property_Is_NonNull_And_Type_Is_Polygon_Then_Deserialization_Should_Not_Throw_Errors()
+
+        private void AssertCoordinateFormatForTypedCoordinateContainer(TypedCoordinateContainer coordContainer)
         {
-            string testJson = DummyTimeLineJson.GetTimeLineJsonWithGeoPropertySet("Polygon");
+            
+            //TJM: The result should be dealing with a Point type for simplicity to check the coordinates.
+            ICoordinateCollection coordColl = coordContainer.Coordinates.Coordinates;
 
-            Assert.DoesNotThrow(() => JsonConvert.DeserializeObject<List<TimeLine>>(testJson));
+            while (coordColl.Children != null)
+            {
+                coordColl = coordColl.Children.FirstOrDefault();
+            }
 
-        }
+            CoordinatePair coordPair = coordColl as CoordinatePair;
 
-        [Test]
-        public void And_Geo_Property_Is_NonNull_And_An_Unsupported_Coordinate_Type_Then_Deserialization_Should_Not_Throw_Errors()
-        {
-            string testJson = DummyTimeLineJson.GetTimeLineJsonWithGeoPropertySet("Unknown");
-
-            Assert.DoesNotThrow(() =>
+            string expectedResult = DummyTimeLineJson.GetCoordinateTestValueFromType("Point", coordPair.IsLegacyFormat);
+            //TJM: Kind of a hack, but whatever...I want to get the exact result from our sample data.
+            expectedResult = expectedResult.Replace("[", "").Replace("]", "");
+            string[] coordinateSplit = expectedResult.Split(',');
+            // Set values based on whether we're using legacy format for the coordinate.
+            decimal latitude = 0;
+            decimal longitude = 0;
+            for (int i = 0; i < coordinateSplit.Length; i++)
+            {
+                decimal coordNum;
+                if (decimal.TryParse(coordinateSplit[i], out coordNum))
                 {
-                    List<TimeLine> timelineItem = JsonConvert.DeserializeObject<List<TimeLine>>(testJson);
-                });
+                    if (i == 0)
+                    {
+                        if (coordPair.IsLegacyFormat)
+                        {
+                            latitude = coordNum;
+                        }
+                        else
+                        {
+                            longitude = coordNum;
+                        }
+                    }
+                    else if (i == 1)
+                    {
+                        if (coordPair.IsLegacyFormat)
+                        {
+                            longitude = coordNum;
+                        }
+                        else
+                        {
+                            latitude = coordNum;
+                        }
+                    }
+                }
+            }
 
+            AssertLatitudeandLongitude(latitude, longitude, coordPair);
         }
 
-        public void And_Places_Property_Is_NonNull_Then_Deserialization_Should_Not_Throw_Errors()
+        private void AssertLatitudeandLongitude(decimal latitude, decimal longitude, CoordinatePair coordPair)
         {
-
-        }
-
-        public void And_Coordinates_Property_Is_NonNull_Then_Deserialization_Should_Not_Throw_Errors()
-        {
-
+            Assert.AreEqual(latitude, coordPair.Latitude);
+            Assert.AreEqual(longitude, coordPair.Longitude);
         }
     }
 }

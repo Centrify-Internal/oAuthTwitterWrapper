@@ -20,8 +20,8 @@ namespace OAuthTwitterWrapper.JsonConverters
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="isLegacyFormat">For Twitter "legacy" format, latitude is stored first in JSON array. If legacy format is expected, then set to True so conversion is correct.</param>
-        public TypedCoordinateContainerJsonConverter(bool isLegacyFormat)
+        /// <param name="isLegacyFormat">Default to false.  For Twitter "legacy" format, latitude is stored first in JSON array. If legacy format is expected, then set to True so conversion is correct.</param>
+        public TypedCoordinateContainerJsonConverter(bool isLegacyFormat = false)
         {
             _isLegacyFormat = isLegacyFormat;
         }
