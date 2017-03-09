@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using OAuthTwitterWrapper.JsonTypes.Coordinates;
+using OAuthTwitterWrapper.JsonConverters;
 
 namespace OAuthTwitterWrapper.JsonTypes
 {
@@ -46,13 +48,19 @@ namespace OAuthTwitterWrapper.JsonTypes
 		public User User { get; set; }
 
 		[JsonProperty("geo")]
-		public string Geo { get; set; }
+        [JsonConverter(typeof(TypedCoordinateContainerJsonConverter), true)]
+        public TypedCoordinateContainer Geo { get; set; }
 
+        /// <summary>
+        /// According to this: https://dev.twitter.com/rest/reference/post/statuses/update
+        /// This property will replace the <see cref="Geo"/> property.
+        /// </summary>
 		[JsonProperty("coordinates")]
-		public string Coordinates { get; set; }
+        [JsonConverter(typeof(TypedCoordinateContainerJsonConverter), false)]
+        public TypedCoordinateContainer Coordinates { get; set; }
 
 		[JsonProperty("place")]
-		public string Place { get; set; }
+		public Place Place { get; set; }
 
 		[JsonProperty("contributors")]
 		public string Contributors { get; set; }

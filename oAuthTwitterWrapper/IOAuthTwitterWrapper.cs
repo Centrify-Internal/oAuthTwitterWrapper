@@ -5,5 +5,9 @@ namespace OAuthTwitterWrapper
 	{
 		string GetMyTimeline();
 		string GetSearch();
-	}
+
+        IAuthenticateSettings AuthenticateSettings { get; set; }
+        ITimeLineSettings TimeLineSettings { get; set; }
+        ISearchSettings SearchSettings { get; set; }
+    }
 }
