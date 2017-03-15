@@ -168,6 +168,8 @@ namespace OAuthTwitterWrapper.JsonConverters
             writer.WriteEndArray();
             */
 
+            //TODO: I should have ICoordinateCollection have a ToJson method that each implementation will implement
+            //      and know how to handle. Then for the coordinate data I should be able to just call "ToJson".
 
             throw new NotImplementedException();
         }
