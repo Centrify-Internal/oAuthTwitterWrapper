@@ -12,8 +12,12 @@ namespace OAuthTwitterWrapper.JsonTypes
         [JsonProperty("hashtags")]
 		public List<Hashtag> Hashtags { get; set; }
 
+        /// <summary>
+        /// This needs to use a class similar to Hashtag...
+        /// https://dev.twitter.com/overview/api/entities-in-twitter-objects
+        /// </summary>
         [JsonProperty("symbols")]
-		public List<string> Symbols { get; set; }
+		public List<Symbol> Symbols { get; set; }
 
         [JsonProperty("urls")]
 		public List<Url> Urls { get; set; }
