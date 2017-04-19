@@ -1,11 +1,19 @@
-#oAuthTwitterWrapper
+# oAuthTwitterWrapper
 This provides a really simple solution to authenticating and wrapping twitter's API calls using the 1.1 API and OAuth.
 
-##Quick installation instructions:
+## Centrify installation instructions:
 
-Run the following nuget command from your project to install the [package] (http://nuget.org/packages/oAuthTwitterWrapper/):
+Use the Centrify Private NuGet server
+https://centrify-private-nuget.azurewebsites.net/nuget
 
-`Install-Package oAuthTwitterWrapper`
+### Uploading the Latest NuGet Package Build to Private NuGet Server
+Open Powershell in the directory that has your NuGet package to upload.
+
+`nuget push *.nupkg -Source https://centrify-private-nuget.azurewebsites.net/nuget -ApiKey PNymdysnc43naslhd3chfdhn322hd64367 -Timeout 900000 -Verbosity Detailed`
+
+
+
+## Original README content...
 
 Amend the appsettings to add your consumer key, secret and screen name. [Generate your key and secret here] (https://dev.twitter.com/apps/new)
 

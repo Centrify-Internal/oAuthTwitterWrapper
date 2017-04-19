@@ -62,6 +62,7 @@
     <Compile Include="JsonTypes\Coordinates\Polygon.cs" />
     <Compile Include="JsonTypes\Coordinates\LineString.cs" />
     <Compile Include="JsonTypes\Coordinates\Point.cs" />
+    <Compile Include="JsonTypes\Symbol.cs" />
     <Compile Include="JsonTypes\Interfaces\ICoordinateCollection.cs" />
     <Compile Include="JsonTypes\Interfaces\ICoordinatePair.cs" />
     <Compile Include="JsonTypes\Interfaces\ITypedCoordinate.cs" />
